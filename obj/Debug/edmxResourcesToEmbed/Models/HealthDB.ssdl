@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="healthModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\paul\Documents\Visual Studio 2015\Projects\HealthCare\HealthCare\App_Data\health.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BenefitPlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Last" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="PlanId" Type="integer" />
+  </EntityType>
+  <EntityContainer Name="healthModelStoreContainer">
+    <EntitySet Name="BenefitPlan" EntityType="Self.BenefitPlan" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

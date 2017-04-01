@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="alert alert-success" role="alert">Success! You have updated your health plan!</div>
+<div class="jumbotron padit">
+    <h1>FauxCo Health Benefits</h1>
+    <p class="lead">Here you can view and make changes to your health benefits.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4 padit">
+        <h2 class="padit">Employees</h2>
+        <table id="employeeTable" class="table table-hover">
+            <tr><th>#</th><th>First</th><th>Last</th></tr>
+            @foreach (var person in ViewBag.Employees as List<HealthCare.Models.EmployeeDisplay>)
+            {
+                <tr class="employee-row noselect">
+                    <td class="employee-row-id">@person.Id</td>
+                    <td>@person.First</td>
+                    <td>@person.Last</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-md-2">
+        <img id="photo" alt="photo" src="http://placehold.it/120x120" />
+    </div>
+    <div class="col-md-6">
+        <form id="healthform">
+            <div class="form-group">
+                <input type="hidden" id="employeeId" name="employeeId">
+                <label for="eName">Employee Name</label>
+                <input type="text" class="form-control" id="eName" placeholder="Name" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" id="planId" name="planId">
+                <label for="title">Your Health Benefits Plan</label>
+                <input type="text" class="form-control" id="title" placeholder="No Plan Selected" />
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input id="optout" name="optout" type="checkbox"> Opt-out. I do not want to participate in the health program
+                </label>
+            </div>
+            <button type="submit" class="btn btn-default">Update Plan</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="padit">Health Plans</h2>
+        @foreach (var item in ViewBag.Plans as List<HealthCare.Models.BenefitPlan>)
+        {
+            <div class="col-md-4 padit">
+                <div class="boxit noselect healthplan" plan="@item.Id">
+                    <div class="special">
+                        <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                    </div>
+                    <h2 class="plan-title">@item.Title</h2>
+                    <p>
+                        <h4>@item.Description</h4>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi ligula, viverra at ante eu, pulvinar interdum nulla. Duis tortor elit, euismod et pellentesque sit amet, venenatis ut est. Mauris imperdiet iaculis vehicula. Vivamus molestie nulla euismod augue posuere, nec pharetra massa consectetur.</span>
+                    </p>
+                </div>
+            </div>
+        }
+        <div class="padit"><span class="tiny">Click a Plan to Choose It</span></div>
+    </div>
+</div>
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <form id="loginform">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Please Sign In</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="hidden" id="userId" name="userId">
+                        <label for="username">Username (username=first name)</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password (password=pass)</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </form>
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

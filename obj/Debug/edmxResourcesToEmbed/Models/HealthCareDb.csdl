@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="healthModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BenefitPlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employees" Relationship="healthModel.FK_Employee_0_0" FromRole="BenefitPlan" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Last" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="BenefitPlanId" Type="Int64" />
+    <NavigationProperty Name="BenefitPlan" Relationship="healthModel.FK_Employee_0_0" FromRole="Employee" ToRole="BenefitPlan" />
+    <Property Name="PhotoUrl" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="healthEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BenefitPlans" EntityType="Self.BenefitPlan" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <AssociationSet Name="FK_Employee_0_0" Association="healthModel.FK_Employee_0_0">
+      <End Role="BenefitPlan" EntitySet="BenefitPlans" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Employee_0_0">
+    <End Type="healthModel.BenefitPlan" Role="BenefitPlan" Multiplicity="0..1" />
+    <End Type="healthModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BenefitPlan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="BenefitPlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

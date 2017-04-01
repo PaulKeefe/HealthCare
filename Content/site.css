@@ -1,0 +1,100 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.padit {
+    padding:0 20px;
+}
+
+.boxit {
+    padding: 10px 30px;
+    border:8px solid #3d79a8;
+    border-radius: 12px;
+    color:lightblue;
+    position:relative;
+    cursor:pointer;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7db9e8+0,207cca+100 */
+    background: #7db9e8; /* Old browsers */
+    background: -moz-linear-gradient(top, #7db9e8 0%, #207cca 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #7db9e8 0%,#207cca 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #7db9e8 0%,#207cca 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#207cca',GradientType=0 ); /* IE6-9 */
+}
+
+.boxit h2 {
+    text-align:center;
+    color:white;
+}
+.boxit h4 {
+    text-align:center;
+    color:#F0F0F0;
+}
+
+span.tiny {
+    font-size:1.5rem;
+}
+
+span.large {
+    font-size:3.0rem;
+}
+
+#photo {
+    margin-left:30px;
+    margin-top:20px;
+    width:auto;
+    height:120px;
+}
+
+.special {
+    position:absolute;
+    right: 50px;
+    top:-35px;
+    font-size: 50px;
+    text-align:center;
+    background: #3d79a8;
+    width:60px;
+    height:60px;
+    border-radius:30px;
+}
+
+.glyphicon.glyphicon-ok-circle {
+    font-size: 50px;
+    text-align:center;
+    color:lightblue;
+}
+
+.alert {
+    display:none;
+    font-size:1.1rem;
+}
